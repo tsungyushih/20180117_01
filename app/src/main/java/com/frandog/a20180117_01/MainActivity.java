@@ -3,6 +3,7 @@ package com.frandog.a20180117_01;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,18 +12,31 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.frandog.a20180117_01.data.DBType;
 import com.frandog.a20180117_01.data.Student;
+import com.frandog.a20180117_01.data.StudentDAO;
+import com.frandog.a20180117_01.data.StudentDAOFactory;
+import com.frandog.a20180117_01.data.StudentFileDAO;
 import com.frandog.a20180117_01.data.StudentScoreDAO;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    final public static StudentScoreDAO dao = new StudentScoreDAO();
+//    final public static StudentScoreDAO dao = new StudentScoreDAO();      加入StudentFileDAO後要改成下面那行
+//    public static StudentFileDAO dao;     新增StudentDAO後改成下面那行
+    public static StudentDAO dao;
+//    int dbType; //切換存取位置用     //新增DBType後改成如下
+    DBType dbType;
     ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        dao = new StudentFileDAO(this);    //複寫了建構式StudentFileDAO  //加了dbType後，又改成下面兩行
+//        dbType = 1; // 1:記憶體 2:檔案     //新增DBType後改成如下
+        dbType = DBType.FILE;
+        dao = StudentDAOFactory.getDAOInstance(this, dbType);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

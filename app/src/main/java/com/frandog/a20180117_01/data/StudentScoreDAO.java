@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Student on 2018/1/17.
  */
 //      DAO :（Data Access Objects) 数据访问对象
-public class StudentScoreDAO {
+public class StudentScoreDAO implements StudentDAO {
     public ArrayList<Student> mylist;
     public StudentScoreDAO()
     {
@@ -32,7 +32,7 @@ public class StudentScoreDAO {
         return null;
     }
 
-    public boolean updata(Student s)
+    public boolean updata(Student s)    //之所以設成boolean而不是void，是因為要預防當更新失敗時(例如網路不穩)，該走額外的步驟
     {
         for (Student t:mylist)
         {
@@ -47,7 +47,7 @@ public class StudentScoreDAO {
     }
     public boolean delete(int id)
     {
-        for(int i=0;i<=mylist.size();i++)
+        for(int i=0;i<mylist.size();i++)    //是<而不是<=
         {
             if(mylist.get(i).id == id)
             {
