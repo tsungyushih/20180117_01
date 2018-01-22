@@ -18,6 +18,10 @@ public static StudentDAO getDAOInstance(Context context, DBType dbType)
 //            case 2:
             case FILE:
                 return new StudentFileDAO(context);
+
+            case DB:    //教完20180122_02SQLite資料庫後，將此專案改成寫入SQL裡
+                return new StudentDAOBImpl(context);
+
         }
         return null;
     }

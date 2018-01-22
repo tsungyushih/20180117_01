@@ -35,7 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
 //        dao = new StudentFileDAO(this);    //複寫了建構式StudentFileDAO  //加了dbType後，又改成下面兩行
 //        dbType = 1; // 1:記憶體 2:檔案     //新增DBType後改成如下
-        dbType = DBType.FILE;
+
+
+//        dbType = DBType.FILE;
+        dbType = DBType.DB;     //教完20180122_02SQLite資料庫後，將此專案改成寫入SQL裡
+
+
         dao = StudentDAOFactory.getDAOInstance(this, dbType);
     }
 
