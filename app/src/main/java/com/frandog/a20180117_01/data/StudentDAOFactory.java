@@ -22,6 +22,9 @@ public static StudentDAO getDAOInstance(Context context, DBType dbType)
             case DB:    //教完20180122_02SQLite資料庫後，將此專案改成寫入SQL裡
                 return new StudentDAOBImpl(context);
 
+            case CLOUD:     //教完20180122_02SQLite資料庫後，將此專案改成寫入雲端裡
+                return new StudentCloudDAO(context);
+
         }
         return null;
     }
