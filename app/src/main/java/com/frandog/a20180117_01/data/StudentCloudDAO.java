@@ -62,7 +62,7 @@ public class StudentCloudDAO implements StudentDAO {
             }
         });
 //當從雲端整筆刪除時，會造成開機就當的bug(mylist連抓兩次造成第2次是null)，所以把本行丟上去
-//        單步除錯教學:點擊左邊點出紅點，點上方Tools/Record Espresso Test，再統地方選Step Into(F7)
+//        單步除錯教學:點擊左邊點出紅點，點上方Run/Record Espresso Test，再統地方選Step Into(F7)
 //        if (mylist == null)
 //        {
 //            mylist = new ArrayList<>();
